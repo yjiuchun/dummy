@@ -1,0 +1,54 @@
+<mujoco model="MuJoCo Model">
+    <compiler angle="radian" meshdir="/home/yjc/dummy/src/dummy_URDF/meshes/" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="base_link" file="base_link.STL" />
+        <mesh name="j1_link" file="j1_link.STL" />
+        <mesh name="j2_link" file="j2_link.STL" />
+        <mesh name="j3_link" file="j3_link.STL" />
+        <mesh name="j4_link" file="j4_link.STL" />
+        <mesh name="j5_link" file="j5_link.STL" />
+    </asset>
+    <worldbody>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="base_link" />
+        <geom type="mesh" rgba="1 1 1 1" mesh="base_link" />
+        <body name="j1_link" pos="-0.00023797 0 0.0985" quat="0.499998 0.5 0.500002 0.5">
+            <inertial pos="-0.00968527 0.00773417 0.00933353" quat="0.637768 -0.357553 -0.0468459 0.680598" mass="0.0518812" diaginertia="4.20745e-05 3.80946e-05 1.22641e-05" />
+            <joint name="j1_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.96706 2.96706" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="j1_link" />
+            <geom type="mesh" rgba="1 1 1 1" mesh="j1_link" />
+            <body name="j2_link" pos="-0.00525 0.028 0.035">
+                <inertial pos="0.00406715 0.0721813 4.63612e-05" quat="0.707107 0.707107 -0.000116634 -0.000119679" mass="0.192146" diaginertia="5.46611e-05 3.26353e-05 3.22427e-05" />
+                <joint name="j2_joint" pos="0 0 0" axis="-1 0 0" limited="true" range="-1.5708 1.2741" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="j2_link" />
+                <geom type="mesh" rgba="1 1 1 1" mesh="j2_link" />
+                <body name="j3_link" pos="0.0105 0.146 0">
+                    <inertial pos="5.13686e-05 0.0432309 -0.0191614" quat="0.37351 0.605776 -0.379798 0.590998" mass="0.0923529" diaginertia="5.05336e-05 4.22062e-05 1.76556e-05" />
+                    <joint name="j3_joint" pos="0 0 0" axis="1 0 0" limited="true" range="-1.5708 0.610865" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="j3_link" />
+                    <geom type="mesh" rgba="1 1 1 1" mesh="j3_link" />
+                    <body name="j4_link" pos="-0.00525 0.052 -0.0245">
+                        <inertial pos="0.00573418 2.69645e-05 0.0913413" quat="0.999697 -9.25426e-05 -0.0246131 -3.8571e-05" mass="0.0949523" diaginertia="6.73431e-05 5.86307e-05 1.31223e-05" />
+                        <joint name="j4_joint" pos="0 0 0" axis="0 0 1" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="j4_link" />
+                        <geom type="mesh" rgba="1 1 1 1" mesh="j4_link" />
+                        <body name="j5_link" pos="-0.008575 0 0.1415">
+                            <inertial pos="0.00714841 5.05128e-05 0.0289279" quat="0.502156 0.498263 -0.502786 0.496769" mass="0.0496707" diaginertia="8.3881e-06 5.91366e-06 5.333e-06" />
+                            <joint name="j5_joint" pos="0 0 0" axis="-1 0 0" limited="true" range="-2.0944 2.0944" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="j5_link" />
+                            <geom type="mesh" rgba="1 1 1 1" mesh="j5_link" />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    <actuator>
+	<!-- 为5个关节分别添加执行器 -->
+	<motor name="motor1" ctrllimited="true" ctrlrange="-3.1415 3.1415" joint="j1_joint"/>
+	<motor name="motor2" ctrllimited="true" ctrlrange="-3.1415 3.1415" joint="j2_joint"/>
+	<motor name="motor3" ctrllimited="true" ctrlrange="-3.1415 3.1415" joint="j3_joint"/>
+	<motor name="motor4" ctrllimited="true" ctrlrange="-3.1415 3.1415" joint="j4_joint"/>
+	<motor name="motor5" ctrllimited="true" ctrlrange="-3.1415 3.1415" joint="j5_joint"/>
+    </actuator>
+</mujoco>
